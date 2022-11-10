@@ -36,8 +36,10 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
-// app.use(express.static('/'))
+// app.use(express.static(__dirname + '/public'))
+
+// use the root folder as the default file location
+app.use(express.static(__dirname))
    .use(cors())
    .use(cookieParser());
 
