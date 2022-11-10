@@ -12,6 +12,9 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+// var spotifyApi = require('spotify-web-api-node');
+var SpotifyWebApi = require('./spotify-web-api');
+
 
 var client_id = '0c1de2a0cc87495e848c68af37f8ea07'; // Your client id
 var client_secret = 'e7be1ae6f8c5458d8d8757e28922f427'; // Your secret
@@ -145,6 +148,19 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
+
+spotifyApi.getMyRecentlyPlayedTracks({
+  limit : 20
+}).then(function(data) {
+    // Output items
+    console.log("Your 20 most recently played tracks are:");
+    data.body.items.forEach(item => console.log(item.track));
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  }); 
+
+  console.log('new')
+
 
 console.log('Listening on 8888');
 app.listen(8888);

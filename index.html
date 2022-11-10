@@ -3,6 +3,7 @@
   <head>
     <title>Example of the Authorization Code flow with Spotify</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- <script src='app.js'></script> -->
     <style type="text/css">
       #login, #loggedin {
         display: none;
@@ -48,6 +49,11 @@
             <dt>Country</dt><dd>{{country}}</dd>
           </dl>
         </div>
+        <section>
+          <dt>Top recently played</dt>
+
+
+        </section>
       </div>
     </script>
 
@@ -120,6 +126,8 @@
               $('#loggedin').hide();
           }
 
+          console.log('html bla')
+
           document.getElementById('obtain-new-token').addEventListener('click', function() {
             $.ajax({
               url: '/refresh_token',
@@ -132,8 +140,13 @@
                 access_token: access_token,
                 refresh_token: refresh_token
               });
+
             });
           }, false);
+          console.log('logged user')
+          
+          
+
         }
       })();
     </script>
